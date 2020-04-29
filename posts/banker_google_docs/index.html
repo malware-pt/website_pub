@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  
+    <title>Falsas faturas com ficheiros .msi - malware bancário utiliza gdocs para resiliência :: malware.pt — Malware em Portugal</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Fui recentemente alertado (obrigado Anubisnetworks!) para uma campanha de email em progresso que envia em anexo (ou através de um link) um ficheiro .msi dentro de um arquivo (.zip ou .bz2) sob o falso pretexto de uma fatura a pagamento, como se pode ver na imagem seguinte:
+Numa primeira análise é evidente que se trata de malware. Tanto pelo conteúdo suspeito dos emails, como pelo ainda mais suspeito ficheiro anexo com extensão ." />
+<meta name="keywords" content="Malware, Portugal, Bancos, Trojan" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://malware.pt/posts/banker_google_docs/" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-164684458-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://malware.pt/assets/style.css">
+
+  <link rel="stylesheet" href="https://malware.pt/assets/red.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://malware.pt/img/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="https://malware.pt/img/favicon/red.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  <meta name="twitter:site" content="t14g0p" />
+
+<meta name="twitter:creator" content="malware_pt" />
+
+
+<meta property="og:locale" content="pt" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Falsas faturas com ficheiros .msi - malware bancário utiliza gdocs para resiliência :: malware.pt">
+<meta property="og:description" content="Analise do malware utilizado numa campanha de emails com falsas faturas que contêm um anexo ou um link para um arquivo com um ficheiro .msi. Trata-se de uma familia de malware que utiliza o google docs como forma de resistir a tentativas de desativação dos servidores de comando e controlo ..." />
+<meta property="og:url" content="https://malware.pt/posts/banker_google_docs/" />
+<meta property="og:site_name" content="Falsas faturas com ficheiros .msi - malware bancário utiliza gdocs para resiliência" />
+
+  <meta property="og:image" content="https://malware.pt/">
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-04-27 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    malware.pt
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/posts/">Artigos</a></li>
+        
+      
+        
+          <li><a href="/contact/">Contacto</a></li>
+        
+      
+        
+          <li><a href="/posts/hello-world">Sobre este site</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/posts/">Artigos</a></li>
+      
+    
+      
+        <li><a href="/contact/">Contacto</a></li>
+      
+    
+      
+        <li><a href="/posts/hello-world">Sobre este site</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://malware.pt/posts/banker_google_docs/">Falsas faturas com ficheiros .msi - malware bancário utiliza gdocs para resiliência</a></h1>
+  <div class="post-meta">
+      
+    <span class="post-date">
+      2020-04-27
+    </span>
+    
+    
+    <span class="post-author">::
+      Tiago Pereira
+    </span>
+    
+     :: 
+
+
+
+
+<style>
+#share-buttons {display: inline-block; vertical-align: middle; }
+#share-buttons:after {content: ""; display: block; clear: both;}
+#share-buttons > div {
+position: relative;
+text-align: left; 
+height: 36px; 
+width: 32px; 
+float: left; 
+text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #d5d5d5; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons">
+<div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?url=https:\/\/malware.pt\/posts\/banker_google_docs\/&text=Falsas faturas com ficheiros .msi - malware bancário utiliza gdocs para resiliência&via=malware_pt');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+<div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=false&url=https:\/\/malware.pt\/posts\/banker_google_docs\/&title=Falsas faturas com ficheiros .msi - malware bancário utiliza gdocs para resiliência&summary=Analise do malware utilizado numa campanha de emails com falsas faturas que contêm um anexo ou um link para um arquivo com um ficheiro .msi. Trata-se de uma familia de malware que utiliza o google docs como forma de resistir a tentativas de desativação dos servidores de comando e controlo ...&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://malware.pt/tags/malware/">Malware</a>&nbsp;
+    
+    #<a href="https://malware.pt/tags/portugal/">Portugal</a>&nbsp;
+    
+    #<a href="https://malware.pt/tags/bancos/">Bancos</a>&nbsp;
+    
+    #<a href="https://malware.pt/tags/trojan/">Trojan</a>&nbsp;
+    
+    #<a href="https://malware.pt/tags/google-docs/">Google docs</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>Fui recentemente alertado (<a href="https://www.anubisnetworks.com/">obrigado Anubisnetworks!</a>) para uma campanha de email em progresso que envia em anexo (ou através de um link) um ficheiro .msi dentro de um arquivo (.zip ou .bz2) sob o falso pretexto de uma fatura a pagamento, como se pode ver na imagem seguinte:</p>
+<p><img src="mail_link.png" alt="Link"></p>
+<p>Numa primeira análise é evidente que se trata de malware. Tanto pelo conteúdo suspeito dos emails, como pelo ainda mais suspeito ficheiro anexo com extensão .msi. No entanto, qual a motivação por trás destas campanhas? e quais as capacidades e sofisticação do malware utilizado?</p>
+<h2 id="análise-do-malware">Análise do malware<a href="#análise-do-malware" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Num primeiro passo, recorrendo a uma sandbox online, é possível sem esforço recolher alguma informação sobre o malware (<a href="https://www.virustotal.com/gui/file/4789008a513930aa7459fca302e0ecaf2e10ded11b6e7a6768ea249324f051e4/behavior/VirusTotal%20Jujubox">Virustotal</a>, <a href="https://www.hybrid-analysis.com/sample/4789008a513930aa7459fca302e0ecaf2e10ded11b6e7a6768ea249324f051e4?environmentId=100">Hybrid analisys</a>,  <a href="https://www.joesandbox.com/analysis/225220/0/html">Joe Sandbox</a>). Resumidamente, observa-se que se trata de um malware que recorre a muitas medidas de auto-proteção para evitar a sua análise e que, após comunicar com um site do Google, a sample inicial escreve um ficheiro na pasta de startup applications do windows e executa-o.</p>
+<p>Infelizmente, a familia não parece ser conhecida por antivirus, que detetam apenas algumas famílias genéricas ou erradas e não são visíveis elementos que revelem mais sobre as capacidades e objetivos deste malware. Isto deve-se às medidas anti-analise implementadas e em particular à ofuscação de todas as strings no interior do malware, estando estas presentes em memória apenas temporáriamente e quando necessário.</p>
+<p>Para não tornar este post demasiado extenso, decidi não entrar em detalhes sobre o processo de reversing ou as técnicas utilizadas para contornar os diversos mecanismos de proteção e ofuscação utilizados. Penso que esses tópicos serão interessantes em posts individuais que permitam explicar melhor cada uma das técnicas. Assim, segue-se o resultado da análise do malware.</p>
+<h4 id="instalação">Instalação<a href="#instalação" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<ol>
+<li>O utilizador faz download de um ficheiro que recebeu via email:</li>
+<li>O utilizador extrai o ficheiro .msi do arquivo e executa-o;</li>
+<li>O ficheiro .msi (O downloader) faz download do malware a partir de um domínio do google sites e grava-o na pasta de startup applications. Assegurando desta forma que o malware será executado sempre que o utilizador fizer login no sistema;</li>
+<li>O ficheiro .msi inicia o processo do malware, que por sua vez comunica com o google docs para ler o conteúdo de 3 documentos distintos. Estes documentos contêm a configuração de dois endereços de C2 e de um endereço Bitcoin;</li>
+<li>O malware fica em execução monitorizando as ações do utilizador e solicitando periodicamente comandos ao servidor de comando e controlo.</li>
+</ol>
+<h5 id="recurso-ao-google-docs-para-configurar-e-alterar-c2">Recurso ao google docs para configurar e alterar C2<a href="#recurso-ao-google-docs-para-configurar-e-alterar-c2" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h5>
+<p>Possivelmente o aspeto mais interessante deste malware é a utilização do Google docs para configurar endereço do servidor de Comando e Controlo (C2). Este sistema aumenta consideravelmente a resiliência do malware a pedidos de desativação do site por parte de equipas de segurança e das autoridades, uma vez que caso o C2 seja desativado, os atacantes terão apenas que alterar o google docs para os bots passem a usar um novo endereço C2.</p>
+<p>O malware contem 3 links para documentos do google. Um dos quais é utilizado para configurar um endereço <a href="#ataques-a-utilizadores-de-bitcoin">bitcoin</a> e dois para configurar os endereços de C2, que se apresentam de seguida:</p>
+<p><img src="doc_work2.png" alt="doc1"></p>
+<p><img src="doc_work3.png" alt="doc2"></p>
+<p>Os URLs do google docs, tal como as outras strings críticas, estão ofuscados e são desobfuscados e armazenados numa variável global durante o processo de inicialização. Depois de obtido o URL, é chamada uma função responsável por ler o documento google docs e extrair o conteúdo entre as strings &ldquo;inicio=&rdquo; e &ldquo;=fim&rdquo;. Esse conteúdo è finalmente passado a uma função que o decifra e posteriormente é guardado numa variável global que armazena o endereço de C2.</p>
+<p>O código seguinte é uma reimplementação em python do código usado para decifrar as strings provenientes de documentos do google:</p>
+<script type="application/javascript" src="https://gist.github.com/t14g0p/a45d8cdef974742cdf0711987deb56fc.js"></script>
+
+<h4 id="overlays-especificamente-construidos-para-alguns-bancos">Overlays especificamente construidos para alguns bancos<a href="#overlays-especificamente-construidos-para-alguns-bancos" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>A função principal deste malware é a de roubar credenciais bancárias de forma a permitir aos atacantes realizar transferências fraudulentas. Para o fazer, o malware apresenta um &ldquo;popup&rdquo; sobre todas as janelas do ecrã quando o utilizador visita o site de um dos bancos alvo.</p>
+<p>Este popup aparenta ser algo despoletado pelo site do banco e impede a utilização do computador temporáriamente enquanto é solicitada informação. Isto permite que os atacantes realizem transferências fraudulentas, contornando mecanismos de autenticação como o cartão matriz e o código SMS, utilizando os dados que são solicitados ao utilizador em tempo real. As imagens seguintes foram extraídas do malware, mostrando alguns dos &ldquo;popups&rdquo; que são apresentados às vítimas:</p>
+<table>
+<thead>
+<tr>
+<th><img src="montepio_sms.png" alt="Montepio"></th>
+<th><img src="bpi_sms.png" alt="BPI"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="santander_sms.png" alt="SANTANDER"></td>
+<td><img src="millenium_sms.png" alt="Millenium"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="ataques-a-utilizadores-de-bitcoin">Ataques a utilizadores de Bitcoin:<a href="#ataques-a-utilizadores-de-bitcoin" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>Para além da componente de ataque a utilizadores de banca online, este malware contem diversas strings A presença destas strings  que sugerem que o atacante tem como alvo utilizadores de bitcoin e de algumas wallets e exchanges em particular. As seguintes strings from encontradas no malware apos desobfuscação com recurso a um script de disassembler:</p>
+<pre><code>ELECTRUM, FOXBIT, BITCOIN, BLOCKCHAIN, EXCHANGE, WALLET, LIQUIDEX
+</code></pre>
+<p>Para além das strings, existe um endereço bitcoin configurado através de um documento Google Docs, com recurso ao mesmo sistema que é utilizado para fazer update aos servidores de C2.</p>
+<p><img src="doc_btc.png" alt="Doc BTC"></p>
+<p>Este <a href="https://www.blockchain.com/btc/address/18KdHi9CJea1AjEtrVQSfqyN6QXZvJZXqS">endereço</a>, no entanto, não aparenta ser muito utilizado. A ultima transação data de Janeiro de 2020 e o total movimentado foram cerca de 56 USD.</p>
+<h4 id="outras-features">Outras features<a href="#outras-features" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>Para alem das features acima descritas, o malware tem ainda várias outras features, tais como:</p>
+<ul>
+<li>Keylogger;</li>
+<li>Recolha de dados sobre o sistema;</li>
+<li>Apresentação de imagens em overlay (sobre todas as janelas do ecrã);</li>
+<li>Execução de comandos remotos;</li>
+<li>Desativação de módulos de software de segurança de bancos (e.g. Trusteer), de antivirus e de updates do sistema;</li>
+<li>Leitura de passwords gravadas no browser;</li>
+<li>Captura de imagens do ecrã remoto;</li>
+<li>Reiniciar o PC;</li>
+<li>Apagar o PC;</li>
+</ul>
+<h2 id="conclusão">Conclusão<a href="#conclusão" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Este tipo de malware bancário (overlay malware em delphi), é comum em portugal ha diversos anos. No entanto, a utilização de google docs como forma de configurar os C2 aumenta consideravelmente a resiliência da botnet. De pouco serve desativar o C2 desta botnet sem primeiro desativar os documentos do google que permitem altera-lo. Documentos esses que facilmente passam despercebidos numa analise rápida do malware, já que este usa diversas metodologias para dificultar a sua analise.</p>
+<h4 id="ioc-indicadores-de-compromisso"><a href="">IOC (Indicadores de Compromisso)</a><a href="#ioc-indicadores-de-compromisso" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>Sample utilizada: <a href="https://www.virustotal.com/gui/file/4789008a513930aa7459fca302e0ecaf2e10ded11b6e7a6768ea249324f051e4/behavior/VirusTotal%20Jujubox">4789008a513930aa7459fca302e0ecaf2e10ded11b6e7a6768ea249324f051e4</a></p>
+<script type="application/javascript" src="https://gist.github.com/t14g0p/2df66e2eeddd23715a2d6f7be1e88b88.js"></script>
+
+
+      </div></div>
+        <br>
+  :: 
+
+
+
+
+<style>
+#share-buttons {display: inline-block; vertical-align: middle; }
+#share-buttons:after {content: ""; display: block; clear: both;}
+#share-buttons > div {
+position: relative;
+text-align: left; 
+height: 36px; 
+width: 32px; 
+float: left; 
+text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #d5d5d5; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons">
+<div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?url=https:\/\/malware.pt\/posts\/banker_google_docs\/&text=Falsas faturas com ficheiros .msi - malware bancário utiliza gdocs para resiliência&via=malware_pt');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+<div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=false&url=https:\/\/malware.pt\/posts\/banker_google_docs\/&title=Falsas faturas com ficheiros .msi - malware bancário utiliza gdocs para resiliência&summary=Analise do malware utilizado numa campanha de emails com falsas faturas que contêm um anexo ou um link para um arquivo com um ficheiro .msi. Trata-se de uma familia de malware que utiliza o google docs como forma de resistir a tentativas de desativação dos servidores de comando e controlo ...&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div> ::
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span
+        class="pagination__title-h">Ler outros posts</span>
+      <hr />
+    </div>
+    <div class="pagination__buttons">
+      
+      
+      <span class="button next">
+        <a href="https://malware.pt/posts/hello-world/">
+          <span class="button__text">Malware, reverse engineering e cibersegurança</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+      
+    </div>
+  </div>
+  
+
+  
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>© 2020 malware.pt</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://malware.pt/assets/main.js"></script>
+<script src="https://malware.pt/assets/prism.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

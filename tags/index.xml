@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on malware.pt</title>
+    <link>https://malware.pt/tags/</link>
+    <description>Recent content in Tags on malware.pt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-pt</language>
+    <copyright>© 2020 malware.pt</copyright>
+    <lastBuildDate>Mon, 27 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://malware.pt/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bancos</title>
+      <link>https://malware.pt/tags/bancos/</link>
+      <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://malware.pt/tags/bancos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google docs</title>
+      <link>https://malware.pt/tags/google-docs/</link>
+      <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://malware.pt/tags/google-docs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Malware</title>
+      <link>https://malware.pt/tags/malware/</link>
+      <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://malware.pt/tags/malware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Portugal</title>
+      <link>https://malware.pt/tags/portugal/</link>
+      <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://malware.pt/tags/portugal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Trojan</title>
+      <link>https://malware.pt/tags/trojan/</link>
+      <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://malware.pt/tags/trojan/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
