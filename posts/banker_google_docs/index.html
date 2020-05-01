@@ -34,18 +34,18 @@ if (!doNotTrack) {
 
 
 
-
+<link rel="stylesheet" href="https://malware.pt/style.css">
 
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://malware.pt/img/apple-touch-icon-144-precomposed.png">
 
-  <link rel="shortcut icon" href="https://malware.pt/img/favicon/red.png">
+  <link rel="shortcut icon" href="https://malware.pt/favicon-32x32.png">
 
 
 
 <meta name="twitter:card" content="summary" />
 
-  <meta name="twitter:site" content="t14g0p" />
+  <meta name="twitter:site" content="malware_pt" />
 
 <meta name="twitter:creator" content="malware_pt" />
 
@@ -86,11 +86,12 @@ if (!doNotTrack) {
   <div class="header__inner">
     <div class="header__logo">
       <a href="/">
-  <div class="logo">
-    malware.pt
-  </div>
-</a>
-
+    <div class="logo">
+      <img src="/logo.png" height="18px" style="padding-right: 10px;"/>
+      malware.pt
+    </div>
+  </a>
+  
     </div>
     <div class="menu-trigger">menu</div>
   </div>
@@ -207,7 +208,12 @@ text-align: center;
 
   <div class="post-content"><div>
         <p>Fui recentemente alertado (<a href="https://www.anubisnetworks.com/">obrigado Anubisnetworks!</a>) para uma campanha de email em progresso que envia em anexo (ou através de um link) um ficheiro .msi dentro de um arquivo (.zip ou .bz2) sob o falso pretexto de uma fatura a pagamento, como se pode ver na imagem seguinte:</p>
-<p><img src="mail_link.png" alt="Link"></p>
+
+
+
+
+<img src="/posts/banker_google_docs/mail_link_hu3b5877cf85566f6249b571fe6c4cfb7d_29736_400x0_resize_box_2.png" width="400" >
+
 <p>Numa primeira análise é evidente que se trata de malware. Tanto pelo conteúdo suspeito dos emails, como pelo ainda mais suspeito ficheiro anexo com extensão .msi. No entanto, qual a motivação por trás destas campanhas? e quais as capacidades e sofisticação do malware utilizado?</p>
 <h2 id="análise-do-malware">Análise do malware<a href="#análise-do-malware" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>Num primeiro passo, recorrendo a uma sandbox online, é possível sem esforço recolher alguma informação sobre o malware (<a href="https://www.virustotal.com/gui/file/4789008a513930aa7459fca302e0ecaf2e10ded11b6e7a6768ea249324f051e4/behavior/VirusTotal%20Jujubox">Virustotal</a>, <a href="https://www.hybrid-analysis.com/sample/4789008a513930aa7459fca302e0ecaf2e10ded11b6e7a6768ea249324f051e4?environmentId=100">Hybrid analisys</a>,  <a href="https://www.joesandbox.com/analysis/225220/0/html">Joe Sandbox</a>). Resumidamente, observa-se que se trata de um malware que recorre a muitas medidas de auto-proteção para evitar a sua análise e que, após comunicar com um site do Google, a sample inicial escreve um ficheiro na pasta de startup applications do windows e executa-o.</p>
@@ -224,8 +230,19 @@ text-align: center;
 <h5 id="recurso-ao-google-docs-para-configurar-e-alterar-c2">Recurso ao google docs para configurar e alterar C2<a href="#recurso-ao-google-docs-para-configurar-e-alterar-c2" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h5>
 <p>Possivelmente o aspeto mais interessante deste malware é a utilização do Google docs para configurar endereço do servidor de Comando e Controlo (C2). Este sistema aumenta consideravelmente a resiliência do malware a pedidos de desativação do site por parte de equipas de segurança e das autoridades, uma vez que caso o C2 seja desativado, os atacantes terão apenas que alterar o google docs para os bots passem a usar um novo endereço C2.</p>
 <p>O malware contem 3 links para documentos do google. Um dos quais é utilizado para configurar um endereço <a href="#ataques-a-utilizadores-de-bitcoin">bitcoin</a> e dois para configurar os endereços de C2, que se apresentam de seguida:</p>
-<p><img src="doc_work2.png" alt="doc1"></p>
-<p><img src="doc_work3.png" alt="doc2"></p>
+<p>
+
+
+
+<img src="/posts/banker_google_docs/doc_work2_hu3bd33caa93ee64796f6536786bbdde0a_25876_800x0_resize_box_2.png" width="800" >
+
+<!-- raw HTML omitted --></p>
+
+
+
+
+<img src="/posts/banker_google_docs/doc_work3_hu17fc5628e553e2d388405439d17be4fc_25834_800x0_resize_box_2.png" width="800" >
+
 <p>Os URLs do google docs, tal como as outras strings críticas, estão ofuscados e são desobfuscados e armazenados numa variável global durante o processo de inicialização. Depois de obtido o URL, é chamada uma função responsável por ler o documento google docs e extrair o conteúdo entre as strings &ldquo;inicio=&rdquo; e &ldquo;=fim&rdquo;. Esse conteúdo è finalmente passado a uma função que o decifra e posteriormente é guardado numa variável global que armazena o endereço de C2.</p>
 <p>O código seguinte é uma reimplementação em python do código usado para decifrar as strings provenientes de documentos do google:</p>
 <script type="application/javascript" src="https://gist.github.com/t14g0p/a45d8cdef974742cdf0711987deb56fc.js"></script>
@@ -236,14 +253,34 @@ text-align: center;
 <table>
 <thead>
 <tr>
-<th><img src="montepio_sms.png" alt="Montepio"></th>
-<th><img src="bpi_sms.png" alt="BPI"></th>
+<th>
+
+
+
+<img src="/posts/banker_google_docs/montepio_sms_hueb69a28ea3675d5b9d5c7c409db41954_3793491_400x0_resize_box_2.png" width="400" >
+</th>
+<th>
+
+
+
+<img src="/posts/banker_google_docs/bpi_sms_hu7bf02e370e16034391212fbf9b404f9b_3050468_400x0_resize_box_2.png" width="400" >
+</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><img src="santander_sms.png" alt="SANTANDER"></td>
-<td><img src="millenium_sms.png" alt="Millenium"></td>
+<td>
+
+
+
+<img src="/posts/banker_google_docs/santander_sms_hu403e47bdafcf0a84246976528f65e003_3894166_400x0_resize_box_2.png" width="400" >
+</td>
+<td>
+
+
+
+<img src="/posts/banker_google_docs/millenium_sms_hucabe9cb86b5027b17333a1814734506c_2554831_400x0_resize_box_2.png" width="400" >
+</td>
 </tr>
 </tbody>
 </table>
@@ -252,7 +289,12 @@ text-align: center;
 <pre><code>ELECTRUM, FOXBIT, BITCOIN, BLOCKCHAIN, EXCHANGE, WALLET, LIQUIDEX
 </code></pre>
 <p>Para além das strings, existe um endereço bitcoin configurado através de um documento Google Docs, com recurso ao mesmo sistema que é utilizado para fazer update aos servidores de C2.</p>
-<p><img src="doc_btc.png" alt="Doc BTC"></p>
+
+
+
+
+<img src="/posts/banker_google_docs/doc_btc_hu6b3ac1c6da5689f131816a94f5559a21_32913_800x0_resize_box_2.png" width="800" >
+
 <p>Este <a href="https://www.blockchain.com/btc/address/18KdHi9CJea1AjEtrVQSfqyN6QXZvJZXqS">endereço</a>, no entanto, não aparenta ser muito utilizado. A ultima transação data de Janeiro de 2020 e o total movimentado foram cerca de 56 USD.</p>
 <h4 id="outras-features">Outras features<a href="#outras-features" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
 <p>Para alem das features acima descritas, o malware tem ainda várias outras features, tais como:</p>
