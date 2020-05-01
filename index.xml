@@ -34,13 +34,23 @@ A intenção é publicar regularmente conteúdos sobre: Campanhas e ataques em p
     </item>
     
     <item>
-      <title>Contacto</title>
+      <title>Contactos</title>
       <link>https://malware.pt/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://malware.pt/contact/</guid>
-      <description>Um blog sobre malware, reverse engineering e cibersegurança.
-contacto: info@malware.pt</description>
+      <description>Email: info@malware.pt
+ Follow @malware_pt Follow @malware-pt PGP:
+-----BEGIN PGP PUBLIC KEY BLOCK----- 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 =3Dun -----END PGP PUBLIC KEY BLOCK-----  </description>
+    </item>
+    
+    <item>
+      <title>Sobre este site</title>
+      <link>https://malware.pt/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://malware.pt/about/</guid>
+      <description>Um blog sobre malware, reverse engineering e cibersegurança.</description>
     </item>
     
   </channel>

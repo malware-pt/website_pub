@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://malware.pt/tags/delphi_malware/</loc>
+    <lastmod>2020-04-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://malware.pt/posts/banker_google_docs/</loc>
     <lastmod>2020-04-27T00:00:00+00:00</lastmod>
   </url>
@@ -58,6 +63,10 @@
   
   <url>
     <loc>https://malware.pt/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>https://malware.pt/about/</loc>
   </url>
   
 </urlset>
