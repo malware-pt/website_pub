@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-pt</language>
     <copyright>© 2020 malware.pt</copyright>
-    <lastBuildDate>Mon, 27 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://malware.pt/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Monitorização de email malicioso dirigido a Portugal</title>
+      <link>https://malware.pt/posts/monitorizar-spam/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://malware.pt/posts/monitorizar-spam/</guid>
+      <description>Desde o ultimo post, tenho estado a trabalhar num sistema de monitorização da distribuição de malware e phishing direcionada a utilizadores portugueses através de email.
+Este sistema era inicialmente destinado à minha utilização, como ferramenta de pesquisa de malware interessante. No entanto, o próprio sistema acaba por ser bastante interessante e a sua utilização poderá ser util para outros. Pelo que, decidi partilhar parcialmente os seus resultados neste site. No futuro publicarei algo sobre o desenvolvimento do próprio sistema, que também me parece interessante.</description>
+    </item>
     
     <item>
       <title>Falsas faturas com ficheiros .msi - malware bancário utiliza gdocs para resiliência</title>
@@ -31,6 +41,16 @@ Numa primeira análise é evidente que se trata de malware. Tanto pelo conteúdo
       <description>Primeiro post em malware.pt.
 Há vários anos que penso em escrever algo sobre cibersegurança, e em particular sobre malware. No entanto, até agora, a vontade não tinha sido suficiente para vencer a inércia. Faltava um empurrão, fornecido agora pelas medidas de isolamento social impostas pela pandemia de covid19.
 A intenção é publicar regularmente conteúdos sobre: Campanhas e ataques em progresso, análise de malware, reverse engineering, threat intelligence ou outros, relacionados com cibersegurança.</description>
+    </item>
+    
+    <item>
+      <title>Campanhas de email</title>
+      <link>https://malware.pt/spam/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://malware.pt/spam/</guid>
+      <description>Campanhas de email potencialmente malicioso dirigidas a contas de email Portugueses observadas nos últimos 15 dias (dados atualizados de hora a hora).
+   var getJSON = function(url, callback) { var xhr = new XMLHttpRequest(); xhr.open(&#39;GET&#39;, url, true); xhr.responseType = &#39;json&#39;; xhr.onload = function() { var status = xhr.status; if (status == 200) { callback(null, xhr.response); } else { callback(status); } }; xhr.send(); }; var listMutator = function(value, data, type, params, component){ text=&#39;&#39;; value.</description>
     </item>
     
     <item>

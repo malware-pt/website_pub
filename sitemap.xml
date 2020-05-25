@@ -3,6 +3,51 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://malware.pt/tags/cybersecurity/</loc>
+    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://malware.pt/tags/machine-learning/</loc>
+    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://malware.pt/tags/malware/</loc>
+    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://malware.pt/</loc>
+    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://malware.pt/posts/monitorizar-spam/</loc>
+    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://malware.pt/tags/portugal/</loc>
+    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://malware.pt/posts/</loc>
+    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://malware.pt/tags/spam/</loc>
+    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://malware.pt/tags/</loc>
+    <lastmod>2020-05-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://malware.pt/tags/bancos/</loc>
     <lastmod>2020-04-27T00:00:00+00:00</lastmod>
   </url>
@@ -23,31 +68,6 @@
   </url>
   
   <url>
-    <loc>https://malware.pt/tags/malware/</loc>
-    <lastmod>2020-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://malware.pt/</loc>
-    <lastmod>2020-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://malware.pt/tags/portugal/</loc>
-    <lastmod>2020-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://malware.pt/posts/</loc>
-    <lastmod>2020-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://malware.pt/tags/</loc>
-    <lastmod>2020-04-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://malware.pt/tags/trojan/</loc>
     <lastmod>2020-04-27T00:00:00+00:00</lastmod>
   </url>
@@ -55,6 +75,10 @@
   <url>
     <loc>https://malware.pt/posts/hello-world/</loc>
     <lastmod>2020-04-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://malware.pt/spam/</loc>
   </url>
   
   <url>

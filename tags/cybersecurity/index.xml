@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cybersecurity on malware.pt</title>
+    <link>https://malware.pt/tags/cybersecurity/</link>
+    <description>Recent content in Cybersecurity on malware.pt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-pt</language>
+    <copyright>© 2020 malware.pt</copyright>
+    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://malware.pt/tags/cybersecurity/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Monitorização de email malicioso dirigido a Portugal</title>
+      <link>https://malware.pt/posts/monitorizar-spam/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://malware.pt/posts/monitorizar-spam/</guid>
+      <description>Desde o ultimo post, tenho estado a trabalhar num sistema de monitorização da distribuição de malware e phishing direcionada a utilizadores portugueses através de email.
+Este sistema era inicialmente destinado à minha utilização, como ferramenta de pesquisa de malware interessante. No entanto, o próprio sistema acaba por ser bastante interessante e a sua utilização poderá ser util para outros. Pelo que, decidi partilhar parcialmente os seus resultados neste site. No futuro publicarei algo sobre o desenvolvimento do próprio sistema, que também me parece interessante.</description>
+    </item>
+    
+  </channel>
+</rss>

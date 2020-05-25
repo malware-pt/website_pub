@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  
+    <title>Monitorização de email malicioso dirigido a Portugal :: malware.pt</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Desde o ultimo post, tenho estado a trabalhar num sistema de monitorização da distribuição de malware e phishing direcionada a utilizadores portugueses através de email.
+Este sistema era inicialmente destinado à minha utilização, como ferramenta de pesquisa de malware interessante. No entanto, o próprio sistema acaba por ser bastante interessante e a sua utilização poderá ser util para outros. Pelo que, decidi partilhar parcialmente os seus resultados neste site. No futuro publicarei algo sobre o desenvolvimento do próprio sistema, que também me parece interessante." />
+<meta name="keywords" content="Malware, Portugal" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://malware.pt/posts/monitorizar-spam/" />
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-164684458-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://malware.pt/assets/style.css">
+
+  <link rel="stylesheet" href="https://malware.pt/assets/red.css">
+
+
+
+<link rel="stylesheet" href="https://malware.pt/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://malware.pt/img/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="https://malware.pt/logo.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  <meta name="twitter:site" content="malware_pt" />
+
+<meta name="twitter:creator" content="malware_pt" />
+
+
+<meta property="og:locale" content="pt" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Monitorização de email malicioso dirigido a Portugal :: malware.pt">
+<meta property="og:description" content="Construção de um sistema de monitorização de spam dirigido a Portugal." />
+<meta property="og:url" content="https://malware.pt/posts/monitorizar-spam/" />
+<meta property="og:site_name" content="Monitorização de email malicioso dirigido a Portugal" />
+
+  
+    <meta property="og:image" content="https://malware.pt/logo.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-05-22 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+    <div class="logo">
+      <img src="/logo.png" height="18px" style="padding-right: 10px;"/>
+      malware.pt
+    </div>
+  </a>
+  
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/spam">* Campanhas email *</a></li>
+        
+      
+        
+          <li><a href="/posts/">Artigos</a></li>
+        
+      
+        
+          <li><a href="/contact/">Contacto</a></li>
+        
+      
+        
+          <li><a href="/about">Sobre este site</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/spam">* Campanhas email *</a></li>
+      
+    
+      
+        <li><a href="/posts/">Artigos</a></li>
+      
+    
+      
+        <li><a href="/contact/">Contacto</a></li>
+      
+    
+      
+        <li><a href="/about">Sobre este site</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://malware.pt/posts/monitorizar-spam/">Monitorização de email malicioso dirigido a Portugal</a></h1>
+  <div class="post-meta">
+      
+    <span class="post-date">
+      2020-05-22
+    </span>
+    
+    
+    <span class="post-author">::
+      Tiago Pereira
+    </span>
+    
+     :: 
+
+
+
+
+<style>
+#share-buttons {display: inline-block; vertical-align: middle; }
+#share-buttons:after {content: ""; display: block; clear: both;}
+#share-buttons > div {
+position: relative;
+text-align: left; 
+height: 36px; 
+width: 32px; 
+float: left; 
+text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #d5d5d5; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons">
+<div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?url=https:\/\/malware.pt\/posts\/monitorizar-spam\/&text=Monitorização de email malicioso dirigido a Portugal&via=malware_pt');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+<div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=false&url=https:\/\/malware.pt\/posts\/monitorizar-spam\/&title=Monitorização de email malicioso dirigido a Portugal&summary=Construção de um sistema de monitorização de spam dirigido a Portugal.&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://malware.pt/tags/malware/">Malware</a>&nbsp;
+    
+    #<a href="https://malware.pt/tags/portugal/">Portugal</a>&nbsp;
+    
+    #<a href="https://malware.pt/tags/spam/">Spam</a>&nbsp;
+    
+    #<a href="https://malware.pt/tags/machine-learning/">Machine Learning</a>&nbsp;
+    
+    #<a href="https://malware.pt/tags/cybersecurity/">Cybersecurity</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>Desde o ultimo post, tenho estado a trabalhar num sistema de monitorização da distribuição de malware e phishing direcionada a utilizadores portugueses através de email.</p>
+<p>Este sistema era inicialmente destinado à minha utilização, como ferramenta de pesquisa de malware interessante. No entanto, o próprio sistema acaba por ser bastante interessante e a sua utilização poderá ser util para outros. Pelo que, decidi partilhar parcialmente os seus resultados neste site. No futuro publicarei algo sobre o desenvolvimento do próprio sistema, que também me parece interessante.</p>
+<p>Assim surge uma nova secção do site chamada &ldquo;Campanhas de email&rdquo;. Trata-se de uma página, atualizada de hora a hora, que contém métricas e informação sobre as campanhas de email (potencialmente malicioso), com foco em utilizadores Portugueses, que foram observadas nos últimos 15 dias pelo sistema de monitorização de emails do malware.pt. O gráfico seguinte é um exemplo dos conteúdos da nova secção:</p>
+
+
+
+
+<img src="/posts/monitorizar-spam/chart_huebf5a0b9e4f62dd6f718e362661e1806_31466_400x0_resize_box_2.png" width="400" >
+
+<h4 id="como-funciona-o-sistema">Como funciona o sistema?<a href="#como-funciona-o-sistema" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>O sistema recebe emails não solicitados dirigidos a diversas contas de email portuguesas. De hora a hora estes são agrupados automaticamente, com recurso a machine learning, em campanhas que agregam a informação de todos os emails, links, attachments, IPs e endereços que façam parte do corpo de emails que o algoritmo identificou como semelhantes.</p>
+<p>Este agrupamento em campanhas não só permite uma visibilidade de alto nível sobre os ataques (campanhas) que estão em progresso, como permite focar os esforços de análise em apenas algumas campanhas, evitando o enorme gasto de recursos necessário à análise de centenas de emails.</p>
+<h4 id="onde-posso-aceder-a-nova-secção">Onde posso aceder a nova secção?<a href="#onde-posso-aceder-a-nova-secção" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>Clicando <a href="https://malware.pt/spam/">Aqui</a>, ou na secção &ldquo;Campanhas de email&rdquo; através do menu.</p>
+<h4 id="quais-os-próximos-passos">Quais os próximos passos?<a href="#quais-os-próximos-passos" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>Há ainda um grande trabalho de melhoria no sistema. Faze-lo detetar mais campanhas, enriquecer de forma automática os dados das campanhas. Adicionar conteúdos e funcionalidades. Publicar posts sobre a construção do sistema&hellip;.</p>
+<h4 id="onde-posso-ver-os-links-attachments-ou-conteúdos-dos-emails">Onde posso ver os links, attachments ou conteúdos dos emails?<a href="#onde-posso-ver-os-links-attachments-ou-conteúdos-dos-emails" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>Neste momento (25/5/2020), apenas está presente no site informação sobre o volume, data, subjects e &ldquo;tags&rdquo; de cada campanha. Ainda esta tudo em desenvolvimento, pelo que se torna necessário dar pequenos passos. Adicionarei mais alguma informação à secção publica nos próximos dias.</p>
+<p>Até lá, terei todo o gosto em partilhar mais informação quando a motivação for a segurança de utilizadores ou a investigação de malware. Estou também a trabalhar numa secção de acesso limitado com informação técnica mais detalhada sobre as campanhas. Contacto: <a href="mailto:info@malware.pt">info@malware.pt</a>.</p>
+
+      </div></div>
+        <br>
+  :: 
+
+
+
+
+<style>
+#share-buttons {display: inline-block; vertical-align: middle; }
+#share-buttons:after {content: ""; display: block; clear: both;}
+#share-buttons > div {
+position: relative;
+text-align: left; 
+height: 36px; 
+width: 32px; 
+float: left; 
+text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #d5d5d5; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons">
+<div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?url=https:\/\/malware.pt\/posts\/monitorizar-spam\/&text=Monitorização de email malicioso dirigido a Portugal&via=malware_pt');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+<div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=false&url=https:\/\/malware.pt\/posts\/monitorizar-spam\/&title=Monitorização de email malicioso dirigido a Portugal&summary=Construção de um sistema de monitorização de spam dirigido a Portugal.&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div> ::
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span
+        class="pagination__title-h">Ler outros posts</span>
+      <hr />
+    </div>
+    <div class="pagination__buttons">
+      
+      
+      <span class="button next">
+        <a href="https://malware.pt/posts/banker_google_docs/">
+          <span class="button__text">Falsas faturas com ficheiros .msi - malware bancário utiliza gdocs para resiliência</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+      
+    </div>
+  </div>
+  
+
+  
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>© 2020 malware.pt</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://malware.pt/assets/main.js"></script>
+<script src="https://malware.pt/assets/prism.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

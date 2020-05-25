@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-pt</language>
     <copyright>© 2020 malware.pt</copyright>
-    <lastBuildDate>Mon, 27 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://malware.pt/tags/portugal/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Monitorização de email malicioso dirigido a Portugal</title>
+      <link>https://malware.pt/posts/monitorizar-spam/</link>
+      <pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://malware.pt/posts/monitorizar-spam/</guid>
+      <description>Desde o ultimo post, tenho estado a trabalhar num sistema de monitorização da distribuição de malware e phishing direcionada a utilizadores portugueses através de email.
+Este sistema era inicialmente destinado à minha utilização, como ferramenta de pesquisa de malware interessante. No entanto, o próprio sistema acaba por ser bastante interessante e a sua utilização poderá ser util para outros. Pelo que, decidi partilhar parcialmente os seus resultados neste site. No futuro publicarei algo sobre o desenvolvimento do próprio sistema, que também me parece interessante.</description>
+    </item>
     
     <item>
       <title>Falsas faturas com ficheiros .msi - malware bancário utiliza gdocs para resiliência</title>
