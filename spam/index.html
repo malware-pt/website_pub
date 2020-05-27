@@ -34,7 +34,7 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://malware.pt/style.css">
+
 
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://malware.pt/img/apple-touch-icon-144-precomposed.png">
@@ -74,8 +74,7 @@ if (!doNotTrack) {
 
 
 
-
-
+<link rel="stylesheet" href="https://malware.pt/mystyle.css">
 
 </head>
 <body class="">
@@ -210,9 +209,9 @@ var plot = function(err,data) {
  	columns:[ 
      {title:"id", field:"cid", width:80},
      {title:"last seen", field:"last_seen", width:100, sorter:"string"},
-     {title:"n", field:"emails", width:30, sorter:"number"},
-     {title:"Tags", field:"tags", width:100,formatter:"textarea",mutator:listMutator},
-     {title:"Subjects", field:"subjects", width:450,formatter:"textarea",mutator:listMutator},
+     {title:"Tags", field:"tags", width:120,formatter:"textarea",mutator:listMutator},
+     {title:"Subjects", field:"subjects", width:540,formatter:"textarea",mutator:listMutator},
+     {title:"Total", field:"emails", width:58, sorter:"number"},
      
    ],
    initialSort : [

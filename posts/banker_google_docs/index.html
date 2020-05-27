@@ -34,7 +34,7 @@ if (!doNotTrack) {
 
 
 
-<link rel="stylesheet" href="https://malware.pt/style.css">
+
 
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://malware.pt/img/apple-touch-icon-144-precomposed.png">
@@ -73,8 +73,7 @@ if (!doNotTrack) {
 
 
 
-
-
+<link rel="stylesheet" href="https://malware.pt/mystyle.css">
 
 </head>
 <body class="">
@@ -222,7 +221,7 @@ text-align: center;
 
 
 
-<img src="/posts/banker_google_docs/mail_link_hu3b5877cf85566f6249b571fe6c4cfb7d_29736_800x0_resize_box_2.png" width="800" >
+<img src="/posts/banker_google_docs/mail_link_hu3b5877cf85566f6249b571fe6c4cfb7d_29736_1280x0_resize_box_2.png" width="1280" >
 
 <p>Numa primeira análise é evidente que se trata de malware. Tanto pelo conteúdo suspeito dos emails, como pelo ainda mais suspeito ficheiro anexo com extensão .msi. No entanto, qual a motivação por trás destas campanhas? e quais as capacidades e sofisticação do malware utilizado?</p>
 <h2 id="análise-do-malware">Análise do malware<a href="#análise-do-malware" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
@@ -244,14 +243,14 @@ text-align: center;
 
 
 
-<img src="/posts/banker_google_docs/doc_work2_hu3bd33caa93ee64796f6536786bbdde0a_25876_800x0_resize_box_2.png" width="800" >
+<img src="/posts/banker_google_docs/doc_work2_hu3bd33caa93ee64796f6536786bbdde0a_25876_1280x0_resize_box_2.png" width="1280" >
 
 <!-- raw HTML omitted --></p>
 
 
 
 
-<img src="/posts/banker_google_docs/doc_work3_hu17fc5628e553e2d388405439d17be4fc_25834_800x0_resize_box_2.png" width="800" >
+<img src="/posts/banker_google_docs/doc_work3_hu17fc5628e553e2d388405439d17be4fc_25834_1280x0_resize_box_2.png" width="1280" >
 
 <p>Os URLs do google docs, tal como as outras strings críticas, estão ofuscados e são desobfuscados e armazenados numa variável global durante o processo de inicialização. Depois de obtido o URL, é chamada uma função responsável por ler o documento google docs e extrair o conteúdo entre as strings &ldquo;inicio=&rdquo; e &ldquo;=fim&rdquo;. Esse conteúdo è finalmente passado a uma função que o decifra e posteriormente é guardado numa variável global que armazena o endereço de C2.</p>
 <p>O código seguinte é uma reimplementação em python do código usado para decifrar as strings provenientes de documentos do google:</p>
@@ -267,13 +266,13 @@ text-align: center;
 
 
 
-<img src="/posts/banker_google_docs/montepio_sms_hueb69a28ea3675d5b9d5c7c409db41954_3793491_400x0_resize_box_2.png" width="400" >
+<img src="/posts/banker_google_docs/montepio_sms_hueb69a28ea3675d5b9d5c7c409db41954_3793491_550x0_resize_box_2.png" width="550" >
 </th>
 <th>
 
 
 
-<img src="/posts/banker_google_docs/bpi_sms_hu7bf02e370e16034391212fbf9b404f9b_3050468_400x0_resize_box_2.png" width="400" >
+<img src="/posts/banker_google_docs/bpi_sms_hu7bf02e370e16034391212fbf9b404f9b_3050468_550x0_resize_box_2.png" width="550" >
 </th>
 </tr>
 </thead>
@@ -283,19 +282,19 @@ text-align: center;
 
 
 
-<img src="/posts/banker_google_docs/santander_sms_hu403e47bdafcf0a84246976528f65e003_3894166_400x0_resize_box_2.png" width="400" >
+<img src="/posts/banker_google_docs/santander_sms_hu403e47bdafcf0a84246976528f65e003_3894166_550x0_resize_box_2.png" width="550" >
 </td>
 <td>
 
 
 
-<img src="/posts/banker_google_docs/millenium_sms_hucabe9cb86b5027b17333a1814734506c_2554831_400x0_resize_box_2.png" width="400" >
+<img src="/posts/banker_google_docs/millenium_sms_hucabe9cb86b5027b17333a1814734506c_2554831_550x0_resize_box_2.png" width="550" >
 </td>
 </tr>
 </tbody>
 </table>
 <h4 id="ataques-a-utilizadores-de-bitcoin">Ataques a utilizadores de Bitcoin:<a href="#ataques-a-utilizadores-de-bitcoin" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
-<p>Para além da componente de ataque a utilizadores de banca online, este malware contem diversas strings A presença destas strings  que sugerem que o atacante tem como alvo utilizadores de bitcoin e de algumas wallets e exchanges em particular. As seguintes strings from encontradas no malware apos desobfuscação com recurso a um script de disassembler:</p>
+<p>Para além da componente de ataque a utilizadores de banca online, este malware contem diversas strings que sugerem que o atacante tem como alvo utilizadores de bitcoin e de algumas wallets e exchanges em particular. As seguintes strings from encontradas no malware apos desobfuscação com recurso a um script de disassembler:</p>
 <pre><code>ELECTRUM, FOXBIT, BITCOIN, BLOCKCHAIN, EXCHANGE, WALLET, LIQUIDEX
 </code></pre>
 <p>Para além das strings, existe um endereço bitcoin configurado através de um documento Google Docs, com recurso ao mesmo sistema que é utilizado para fazer update aos servidores de C2.</p>
@@ -303,7 +302,7 @@ text-align: center;
 
 
 
-<img src="/posts/banker_google_docs/doc_btc_hu6b3ac1c6da5689f131816a94f5559a21_32913_800x0_resize_box_2.png" width="800" >
+<img src="/posts/banker_google_docs/doc_btc_hu6b3ac1c6da5689f131816a94f5559a21_32913_1280x0_resize_box_2.png" width="1280" >
 
 <p>Este <a href="https://www.blockchain.com/btc/address/18KdHi9CJea1AjEtrVQSfqyN6QXZvJZXqS">endereço</a>, no entanto, não aparenta ser muito utilizado. A ultima transação data de Janeiro de 2020 e o total movimentado foram cerca de 56 USD.</p>
 <h4 id="outras-features">Outras features<a href="#outras-features" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
