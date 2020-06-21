@@ -78,6 +78,10 @@
   </url>
   
   <url>
+    <loc>https://malware.pt/private/auth/</loc>
+  </url>
+  
+  <url>
     <loc>https://malware.pt/spam/</loc>
   </url>
   
@@ -87,6 +91,18 @@
   
   <url>
     <loc>https://malware.pt/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>https://malware.pt/private/campaign_details/</loc>
+  </url>
+  
+  <url>
+    <loc>https://malware.pt/private/email_details/</loc>
+  </url>
+  
+  <url>
+    <loc>https://malware.pt/private/</loc>
   </url>
   
   <url>

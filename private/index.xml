@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Privates on malware.pt</title>
+    <link>https://malware.pt/private/</link>
+    <description>Recent content in Privates on malware.pt</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-pt</language>
+    <copyright>© 2020 malware.pt</copyright>
+    
+	<atom:link href="https://malware.pt/private/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Campanhas de email</title>
+      <link>https://malware.pt/private/auth/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://malware.pt/private/auth/</guid>
+      <description> window.location.replace(&#34;https://storage.cloud.google.com/private.malware.pt/index.html?authuser=2&#34;);  </description>
+    </item>
+    
+    <item>
+      <title>Detalhes campanha email</title>
+      <link>https://malware.pt/private/campaign_details/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://malware.pt/private/campaign_details/</guid>
+      <description>Subjects data | subject | count
+Say hello using the People API.
+Authorize Sign Out  var apiKey = &#39;AIzaSyAtvKKeXLBxp-fQ-ErcPUhAI31ocyM27PU&#39;; var discoveryDocs = [&#34;https://www.googleapis.com/discovery/v1/apis/storage/v1/rest&#34;]; var clientId = &#39;209531450804-4mkoisoqr4ie6mie1br515vrdeuqep2b.apps.googleusercontent.com&#39;; var scopes = &#39;https://www.googleapis.com/auth/cloud-platform&#39;; var authorizeButton = document.getElementById(&#39;authorize-button&#39;); var signoutButton = document.getElementById(&#39;signout-button&#39;); function handleClientLoad() { gapi.load(&#39;client:auth2&#39;, initClient); } function initClient() { gapi.client.init({ apiKey: apiKey, discoveryDocs: discoveryDocs, clientId: clientId, scope: &#39;https://www.googleapis.com/auth/devstorage.read_only&#39;, }).then(function () { gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus); updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get()); authorizeButton.onclick = handleAuthClick; signoutButton.onclick = handleSignoutClick; }); } function updateSigninStatus(isSignedIn) { if (isSignedIn) { authorizeButton.</description>
+    </item>
+    
+    <item>
+      <title>Detalhes campanha email</title>
+      <link>https://malware.pt/private/email_details/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://malware.pt/private/email_details/</guid>
+      <description>Subjects data | subject | count
+Links data | links
+Attachments data | sha256</description>
+    </item>
+    
+  </channel>
+</rss>
